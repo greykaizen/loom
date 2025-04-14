@@ -1,0 +1,21 @@
+we need to work on the project, pure html css js php
+aim is something similar to reddit clone, first we need the UI to be minimal
+
+this was the proposal for the project,
+
+Goal of the Project
+• Create a simple Q&A and discussion platform.
+• Allow users to post questions, articles, and discussions.
+• Enable voting and commenting for engagement.
+• Implement basic user authentication for personalization.
+Features/Functionalities/Modules
+• User Authentication – Signup, login, and basic profile setup (local storage-based).
+• Post Creation – Users can ask questions or share articles.
+• Voting System – Upvote/downvote functionality.
+• Commenting System – Users can interact via comments.
+• Tagging & Categories – Posts can be categorized for better organization.
+• Basic Moderation – Option to report or remove inappropriate content.
+• Responsive UI – Clean design optimized for different screen sizes.
+
+
+write me the whole project ,

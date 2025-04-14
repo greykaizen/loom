@@ -1,0 +1,26 @@
+/reddit-clone/
+├── index.php               # Main page with post listings
+├── login.php               # Login page
+├── signup.php              # Registration page
+├── post.php                # Individual post view
+├── create-post.php         # Post creation page
+├── profile.php             # User profile
+├── logout.php              # Logout handler
+├── report.php              # Report handler
+├── edit-profile.php        # Profile editing
+├── edit-post.php           # Post editing
+├── css/
+│   ├── style.css           # Main styles
+│   └── responsive.css      # Mobile responsiveness
+├── js/
+│   ├── main.js             # Core functionality
+│   ├── auth.js             # Authentication functions
+│   └── post.js             # Post and comment handling
+├── includes/
+│   ├── header.php          # Common header
+│   ├── footer.php          # Common footer
+│   ├── db_connect.php      # Database connection
+│   ├── functions.php       # Utility functions
+│   └── auth_functions.php  # Auth functions
+└── ajax/
+    └── vote.php            # AJAX voting handler
