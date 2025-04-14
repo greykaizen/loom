@@ -1,7 +1,7 @@
 </main>
     <footer>
         <div class="container">
-            <p>&copy; <?php echo date('Y'); ?> Q&A Platform</p>
+            <p>&copy; <?php echo date('Y'); ?> loom </p>
         </div>
     </footer>
     <script src="js/main.js"></script>

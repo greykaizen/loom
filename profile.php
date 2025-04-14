@@ -101,7 +101,8 @@ $posts_result = mysqli_stmt_get_result($stmt);
                         </h2>
                         <div class="post-body">
                             <?php
-                            $content = htmlspecialchars($post['content']);
+                            // $content = nl2br(htmlspecialchars($post['content']));
+                            $content = nl2br($post['content']);
                             echo (strlen($content) > 150) ? substr($content, 0, 150) . '...' : $content;
                             ?>
                         </div>

@@ -59,7 +59,6 @@ function verify_csrf_token($token) {
     return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
 }
 
-?>
 
 // Create a notification
 function create_notification($user_id, $content, $link, $notification_type, $reference_id, $actor_id) {
@@ -175,3 +174,24 @@ function mark_all_notifications_read($user_id) {
     mysqli_stmt_bind_param($stmt, "i", $user_id);
     mysqli_stmt_execute($stmt);
 }
+
+// /**
+//  * Get count of unread notifications for a user
+//  *
+//  * @param int $user_id The user ID
+//  * @return int Number of unread notifications
+//  */
+// function get_unread_notification_count($user_id) {
+//     global $conn;
+    
+//     $query = "SELECT COUNT(*) as count FROM notifications WHERE user_id = ? AND is_read = FALSE";
+//     $stmt = mysqli_prepare($conn, $query);
+//     mysqli_stmt_bind_param($stmt, "i", $user_id);
+//     mysqli_stmt_execute($stmt);
+//     $result = mysqli_stmt_get_result($stmt);
+//     $row = mysqli_fetch_assoc($result);
+    
+//     return (int)$row['count'];
+// }
+
+?>
