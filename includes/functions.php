@@ -1,8 +1,10 @@
 <?php
 // Time formatter (e.g. "2 hours ago")
 function time_elapsed_string($datetime) {
-    $now = new DateTime;
-    $ago = new DateTime($datetime);
+    $timezone = new DateTimeZone('Asia/Karachi'); // Pakistan timezone
+
+    $now = new DateTime('now', $timezone);
+    $ago = new DateTime($datetime, $timezone);
     $diff = $now->diff($ago);
 
     if ($diff->y > 0) return $diff->y . ' year' . ($diff->y > 1 ? 's' : '') . ' ago';
@@ -193,5 +195,24 @@ function mark_all_notifications_read($user_id) {
     
 //     return (int)$row['count'];
 // }
+
+function delete_post($post_id, $user_id) {
+    global $conn;
+
+    $query = "SELECT * FROM posts WHERE post_id = ? AND user_id = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ii", $post_id, $user_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($result) === 0) {
+        return false; // Not allowed to delete
+    }
+
+    $delete = "DELETE FROM posts WHERE post_id = ?";
+    $stmt = mysqli_prepare($conn, $delete);
+    mysqli_stmt_bind_param($stmt, "i", $post_id);
+    return mysqli_stmt_execute($stmt);
+}
 
 ?>

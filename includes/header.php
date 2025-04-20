@@ -2,6 +2,7 @@
 require_once 'includes/db_connect.php';
 require_once 'includes/functions.php';
 require_once 'includes/auth_functions.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,21 +12,32 @@ require_once 'includes/auth_functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo isset($page_title) ? $page_title . ' - ' : ''; ?>Q&A Platform</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <!-- <link rel="stylesheet" href="css/login.css"> -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body class="<?php echo is_logged_in() ? 'logged-in' : ''; ?>">
     <header>
-        <div class="container">
+        <div class="container header-container">
             <div class="logo">
-                <a href="index.php">loom</a>
+                <a href="index.php">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>loom</span>
+                </a>
             </div>
-            <nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
                 <ul>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="index.php"><i class="fas fa-home"></i> Home</a></li>
                     <?php if (is_logged_in()): ?>
-                        <li><a href="create-post.php">Create Post</a></li>
+                        <li><a href="create-post.php"><i class="fas fa-plus-circle"></i> Create Post</a></li>
                         <li class="notification-dropdown">
                             <a href="javascript:void(0)" class="notification-bell">
                                 <i class="fas fa-bell"></i>
@@ -63,11 +75,11 @@ require_once 'includes/auth_functions.php';
                                 </div>
                             </div>
                         </li>
-                        <li><a href="profile.php">Profile</a></li>
-                        <li><a href="logout.php">Logout</a></li>
+                        <li><a href="profile.php"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                     <?php else: ?>
-                        <li><a href="login.php">Login</a></li>
-                        <li><a href="signup.php">Sign Up</a></li>
+                        <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                        <li><a href="signup.php"><i class="fas fa-user-plus"></i> Sign Up</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>

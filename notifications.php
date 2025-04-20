@@ -52,7 +52,100 @@ $notifications = get_notifications($user_id, 50);
 </div>
 
 <style>
-.notifications-list {
+    .notification-dropdown {
+    position: relative;
+}
+
+.notification-bell {
+    position: relative;
+    display: inline-block;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    padding: 0 5px;
+    font-size: 0.7rem;
+    min-width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--card-bg);
+    min-width: 300px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 101;
+}
+
+.notification-dropdown:hover .dropdown-content,
+.notification-dropdown:focus .dropdown-content {
+    display: block;
+}
+
+.dropdown-header, .dropdown-footer {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-footer {
+    border-top: 1px solid var(--border-color);
+    border-bottom: none;
+}
+
+.dropdown-header h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.notification-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s;
+}
+
+.notification-item:hover {
+    background-color: #f5f5f5;
+    text-decoration: none;
+}
+
+.notification-item.unread {
+    background-color: #e8f4fd;
+}
+
+.notification-content {
+    margin-bottom: 5px;
+}
+
+.notification-time {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.no-notifications {
+    padding: 15px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+/* .notifications-list {
     border-top: 1px solid var(--border-color);
 }
 .notification-item {
@@ -77,7 +170,7 @@ $notifications = get_notifications($user_id, 50);
     justify-content: space-between;
     font-size: 0.8rem;
     color: var(--text-secondary);
-}
+} */
 </style>
 
 <?php include 'includes/footer.php'; ?>

@@ -1,0 +1,315 @@
+    /* Profile Page Styles */
+    .profile-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .profile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+        border: 1px solid #e2e8f0;
+    }
+
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+    }
+
+    .profile-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .profile-info {
+        text-align: center;
+    }
+
+    .profile-info h1 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #2d3748;
+    }
+
+    .profile-bio {
+        margin: 1rem 0;
+        color: #4a5568;
+        max-width: 500px;
+        line-height: 1.5;
+    }
+
+    .profile-stats {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 1.5rem 0;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #2d3748;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+        color: #718096;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .profile-actions {
+        margin-top: 1.5rem;
+    }
+
+    .profile-content {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .posts-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .post-card {
+        display: flex;
+        background: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.2s ease;
+        border: 1px solid #e2e8f0;
+    }
+
+    .post-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .vote-column {
+        background: #f8fafc;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-width: 60px;
+    }
+
+    .vote-btn {
+        background: none;
+        border: none;
+        color: #cbd5e0;
+        cursor: pointer;
+        font-size: 1rem;
+        padding: 0.25rem;
+        transition: color 0.2s;
+    }
+
+    .vote-btn:hover {
+        color: #4c51bf;
+    }
+
+    .vote-count {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin: 0.25rem 0;
+    }
+
+    .post-content {
+        padding: 1rem;
+        flex-grow: 1;
+    }
+
+    .post-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .post-category a {
+        color: #4c51bf;
+        font-weight: 600;
+        text-decoration: none;
+        background: #e9d8fd;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+    }
+
+    .post-meta {
+        color: #718096;
+        font-size: 0.75rem;
+    }
+
+    .post-title {
+        margin: 0 0 0.75rem 0;
+        font-size: 1.125rem;
+        font-weight: 600;
+    }
+
+    .post-title a {
+        color: #2d3748;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .post-title a:hover {
+        color: #4c51bf;
+    }
+
+    .post-body {
+        color: #4a5568;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+        font-size: 0.9375rem;
+    }
+
+    .post-footer {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .post-action {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: #718096;
+        font-size: 0.8125rem;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .post-action:hover {
+        color: #4c51bf;
+    }
+
+    .post-action.delete:hover {
+        color: #e53e3e;
+    }
+
+    .post-action i {
+        font-size: 0.8125rem;
+    }
+
+    .no-posts-message {
+        padding: 3rem 1rem;
+        text-align: center;
+    }
+
+    .empty-state {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .empty-icon {
+        font-size: 3rem;
+        color: #cbd5e0;
+        margin-bottom: 1rem;
+    }
+
+    .empty-state h3 {
+        font-size: 1.25rem;
+        color: #2d3748;
+        margin-bottom: 0.5rem;
+    }
+
+    .empty-state p {
+        color: #718096;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .btn-primary {
+        background: #4c51bf;
+        color: white;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background: #434190;
+        transform: translateY(-1px);
+    }
+
+    /* Responsive Design */
+    @media (min-width: 768px) {
+        .profile-header {
+            flex-direction: row;
+            text-align: left;
+            align-items: flex-start;
+            padding: 2rem;
+        }
+
+        .profile-avatar {
+            margin-right: 2rem;
+            margin-bottom: 0;
+        }
+
+        .profile-info {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .profile-stats {
+            justify-content: flex-start;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .post-card {
+            flex-direction: column;
+        }
+
+        .vote-column {
+            flex-direction: row;
+            padding: 0.5rem;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .post-footer {
+            flex-wrap: wrap;
+        }
+    }
