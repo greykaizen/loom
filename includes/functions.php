@@ -177,25 +177,6 @@ function mark_all_notifications_read($user_id) {
     mysqli_stmt_execute($stmt);
 }
 
-// /**
-//  * Get count of unread notifications for a user
-//  *
-//  * @param int $user_id The user ID
-//  * @return int Number of unread notifications
-//  */
-// function get_unread_notification_count($user_id) {
-//     global $conn;
-    
-//     $query = "SELECT COUNT(*) as count FROM notifications WHERE user_id = ? AND is_read = FALSE";
-//     $stmt = mysqli_prepare($conn, $query);
-//     mysqli_stmt_bind_param($stmt, "i", $user_id);
-//     mysqli_stmt_execute($stmt);
-//     $result = mysqli_stmt_get_result($stmt);
-//     $row = mysqli_fetch_assoc($result);
-    
-//     return (int)$row['count'];
-// }
-
 function delete_post($post_id, $user_id) {
     global $conn;
 
@@ -214,5 +195,4 @@ function delete_post($post_id, $user_id) {
     mysqli_stmt_bind_param($stmt, "i", $post_id);
     return mysqli_stmt_execute($stmt);
 }
-
 ?>

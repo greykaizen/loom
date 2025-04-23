@@ -6,23 +6,23 @@ ini_set('display_errors', 1);
 include 'includes/header.php';
 
 // Function to check for banned words
-function containsBannedWords($conn, $content) {
-    $content = strtolower($content);
-    $query = "SELECT LOWER(word) as word FROM banned_words";
-    $result = mysqli_query($conn, $query);
+// function containsBannedWords($conn, $content) {
+//     $content = strtolower($content);
+//     $query = "SELECT LOWER(word) as word FROM banned_words";
+//     $result = mysqli_query($conn, $query);
     
-    if (!$result) {
-        error_log("Database error in containsBannedWords: " . mysqli_error($conn));
-        return false;
-    }
+//     if (!$result) {
+//         error_log("Database error in containsBannedWords: " . mysqli_error($conn));
+//         return false;
+//     }
     
-    while ($row = mysqli_fetch_assoc($result)) {
-        if (strpos($content, $row['word']) !== false) {
-            return true;
-        }
-    }
-    return false;
-}
+//     while ($row = mysqli_fetch_assoc($result)) {
+//         if (strpos($content, $row['word']) !== false) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 // Handle post deletion
 if (isset($_GET['delete']) && is_logged_in()) {
@@ -129,81 +129,81 @@ if (isset($_GET['user'])) {
 }
 
 // Handle moderation toggle
-if ($viewing_own && isset($_GET['enable_moderation'])) {
-    // Get the new moderation state (0 or 1)
-    $enable = (int)$_GET['enable_moderation'];
+// if ($viewing_own && isset($_GET['enable_moderation'])) {
+//     // Get the new moderation state (0 or 1)
+//     $enable = (int)$_GET['enable_moderation'];
 
-    // Update user's moderation setting in database
-    $update_query = "UPDATE users SET moderation_enabled = ? WHERE user_id = ?";
-    $stmt = mysqli_prepare($conn, $update_query);
-    mysqli_stmt_bind_param($stmt, "ii", $enable, $_SESSION['user_id']);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+//     // Update user's moderation setting in database
+//     $update_query = "UPDATE users SET moderation_enabled = ? WHERE user_id = ?";
+//     $stmt = mysqli_prepare($conn, $update_query);
+//     mysqli_stmt_bind_param($stmt, "ii", $enable, $_SESSION['user_id']);
+//     mysqli_stmt_execute($stmt);
+//     mysqli_stmt_close($stmt);
 
-    // If enabling moderation, scan and clean existing posts
-    if ($enable) {
-        // Get all user's posts
-        $posts_query = "SELECT post_id, content FROM posts WHERE user_id = ?";
-        $stmt = mysqli_prepare($conn, $posts_query);
-        mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+//     // If enabling moderation, scan and clean existing posts
+//     if ($enable) {
+//         // Get all user's posts
+//         $posts_query = "SELECT post_id, content FROM posts WHERE user_id = ?";
+//         $stmt = mysqli_prepare($conn, $posts_query);
+//         mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
+//         mysqli_stmt_execute($stmt);
+//         $result = mysqli_stmt_get_result($stmt);
         
-        $deleted_count = 0;
-        while ($post = mysqli_fetch_assoc($result)) {
-            // Check for banned words
-            if (containsBannedWords($conn, $post['content'])) {
-                // Delete post if contains banned words
-                $delete_query = "DELETE FROM posts WHERE post_id = ?";
-                $delete_stmt = mysqli_prepare($conn, $delete_query);
-                mysqli_stmt_bind_param($delete_stmt, "i", $post['post_id']);
-                mysqli_stmt_execute($delete_stmt);
-                mysqli_stmt_close($delete_stmt);
-                $deleted_count++;
-            }
-        }
-        mysqli_stmt_close($stmt);
+//         $deleted_count = 0;
+//         while ($post = mysqli_fetch_assoc($result)) {
+//             // Check for banned words
+//             if (containsBannedWords($conn, $post['content'])) {
+//                 // Delete post if contains banned words
+//                 $delete_query = "DELETE FROM posts WHERE post_id = ?";
+//                 $delete_stmt = mysqli_prepare($conn, $delete_query);
+//                 mysqli_stmt_bind_param($delete_stmt, "i", $post['post_id']);
+//                 mysqli_stmt_execute($delete_stmt);
+//                 mysqli_stmt_close($delete_stmt);
+//                 $deleted_count++;
+//             }
+//         }
+//         mysqli_stmt_close($stmt);
 
-        // Set appropriate feedback message
-        if ($deleted_count > 0) {
-            $_SESSION['message'] = "Moderation enabled. $deleted_count posts with banned words were removed.";
-        } else {
-            $_SESSION['message'] = "Moderation enabled. No posts with banned words found.";
-        }
-    } else {
-        $_SESSION['message'] = "Moderation disabled.";
-    }
+//         // Set appropriate feedback message
+//         if ($deleted_count > 0) {
+//             $_SESSION['message'] = "Moderation enabled. $deleted_count posts with banned words were removed.";
+//         } else {
+//             $_SESSION['message'] = "Moderation enabled. No posts with banned words found.";
+//         }
+//     } else {
+//         $_SESSION['message'] = "Moderation disabled.";
+//     }
 
     // Preserve URL parameters during redirect
-    $redirect_url = "profile.php";
-    if (isset($_GET['user'])) {
-        $redirect_url .= "?user=" . urlencode($_GET['user']);
-    }
+//     $redirect_url = "profile.php";
+//     if (isset($_GET['user'])) {
+//         $redirect_url .= "?user=" . urlencode($_GET['user']);
+//     }
     
-    // Redirect back to profile page
-    header("Location: " . $redirect_url);
-    exit;
-}
+//     // Redirect back to profile page
+//     header("Location: " . $redirect_url);
+//     exit;
+// }
 
 // Check for banned words in existing posts if moderation is enabled
-if ($viewing_own && !empty($user['moderation_enabled'])) {
-    $posts_query = "SELECT post_id, content FROM posts WHERE user_id = ?";
-    $stmt = mysqli_prepare($conn, $posts_query);
-    mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+// if ($viewing_own && !empty($user['moderation_enabled'])) {
+//     $posts_query = "SELECT post_id, content FROM posts WHERE user_id = ?";
+//     $stmt = mysqli_prepare($conn, $posts_query);
+//     mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
+//     mysqli_stmt_execute($stmt);
+//     $result = mysqli_stmt_get_result($stmt);
 
-    while ($post = mysqli_fetch_assoc($result)) {
-        if (containsBannedWords($conn, $post['content'])) {
-            $delete_query = "DELETE FROM posts WHERE post_id = ?";
-            $delete_stmt = mysqli_prepare($conn, $delete_query);
-            mysqli_stmt_bind_param($delete_stmt, "i", $post['post_id']);
-            mysqli_stmt_execute($delete_stmt);
-            mysqli_stmt_close($delete_stmt);
-        }
-    }
-    mysqli_stmt_close($stmt);
-}
+//     while ($post = mysqli_fetch_assoc($result)) {
+//         if (containsBannedWords($conn, $post['content'])) {
+//             $delete_query = "DELETE FROM posts WHERE post_id = ?";
+//             $delete_stmt = mysqli_prepare($conn, $delete_query);
+//             mysqli_stmt_bind_param($delete_stmt, "i", $post['post_id']);
+//             mysqli_stmt_execute($delete_stmt);
+//             mysqli_stmt_close($delete_stmt);
+//         }
+//     }
+//     mysqli_stmt_close($stmt);
+// }
 
 $profile_image = 'uploads/profile_pictures/default.jpg';
 if (!empty($user['profile_picture'])) {
@@ -238,7 +238,6 @@ $posts_result = mysqli_stmt_get_result($stmt);
             <?php echo htmlspecialchars($_SESSION['message']); unset($_SESSION['message']); ?>
         </div>
     <?php endif; ?>
-
     <div class="profile-container">
         <div class="profile-header">
             <div class="profile-avatar">
@@ -246,7 +245,6 @@ $posts_result = mysqli_stmt_get_result($stmt);
             </div>
             <div class="profile-info">
                 <h1><?php echo htmlspecialchars($user['username']); ?></h1>
-                
                 <div class="profile-stats">
                     <div class="stat-item">
                         <div class="stat-value"><?php echo htmlspecialchars($user['karma']); ?></div>
@@ -263,28 +261,8 @@ $posts_result = mysqli_stmt_get_result($stmt);
                         <div class="stat-label">Member</div>
                     </div>
                 </div>
-                
-                <p class="profile-bio"><?php echo htmlspecialchars($user['bio'] ?? 'No bio yet'); ?></p>
                 <?php if ($viewing_own): ?>
-                  <div class="moderation-toggle">
-                        <form method="get" action="profile.php">
-                            <!-- Hidden input to handle unchecked state -->
-                            <input type="hidden" name="enable_moderation" value="0">
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="moderationToggle" 
-                                    <?php echo $user['moderation_enabled'] ? 'checked' : ''; ?>
-                                    onchange="this.form.submit()" 
-                                    name="enable_moderation" 
-                                    value="1"> <!-- Always sends 1 when checked -->
-
-                                <label class="form-check-label" for="moderationToggle">
-                                    Enable Content Moderation
-                                </label>
-                            </div>
-                        </form>
-                        <small class="text-muted">Automatically removes posts containing banned words</small>
-                    </div>
+               
                     <div class="profile-actions">
                         <a href="edit-profile.php" class="btn btn-primary">
                             <i class="fas fa-edit"></i> Edit Profile
@@ -293,10 +271,8 @@ $posts_result = mysqli_stmt_get_result($stmt);
                 <?php endif; ?>
             </div>
         </div>
-
         <div class="profile-content">
             <h2 class="section-title">Recent Posts</h2>
-
             <?php if (mysqli_num_rows($posts_result) > 0): ?>
                 <div class="posts-grid">
                     <?php while ($post = mysqli_fetch_assoc($posts_result)): ?>

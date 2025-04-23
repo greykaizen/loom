@@ -61,11 +61,11 @@ $result = mysqli_stmt_get_result($stmt);
 ?>
 
 <div class="content-area">
-    <?php if (is_logged_in()): ?>
+    <!-- <?php if (is_logged_in()): ?>
         <div class="create-post-btn" style="margin-bottom: 20px;">
             <a href="create-post.php" class="btn">Create Post</a>
         </div>
-    <?php endif; ?>
+    <?php endif; ?> -->
 
     <?php if ($category || $tag): ?>
         <div class="filter-info" style="margin-bottom: 20px; padding: 10px; background: #f0f0f0; border-radius: 4px;">
